@@ -45,10 +45,6 @@ function HomePage() {
         <CardContainer></CardContainer>
         <CardContainer></CardContainer>
         <CardContainer></CardContainer>
-        <CardContainer></CardContainer>
-        <CardContainer></CardContainer>
-        <CardContainer></CardContainer>
-        <CardContainer></CardContainer>
       </Container>
     </div>
   );
