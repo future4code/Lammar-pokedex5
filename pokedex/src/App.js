@@ -1,11 +1,12 @@
 import Rotas from "./routes/Routes";
 import "./App.css";
+import CartContext from "./context/Context";
 
 function App() {
   return (
-    <div>
+    <CartContext.Provider>
       <Rotas />
-    </div>
+    </CartContext.Provider>
   );
 }
 
