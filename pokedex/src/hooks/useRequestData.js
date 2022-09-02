@@ -8,7 +8,7 @@ const useRequestData = (url) => {
     axios
       .get(url)
       .then((response) => {
-        setData(response.data)
+         setData(response.data)
       })
       .catch((error) => {
         console.log(error)
@@ -16,7 +16,7 @@ const useRequestData = (url) => {
       })
   }, [url])
 
-  return data
+  return [data]
 }
 
 export default useRequestData

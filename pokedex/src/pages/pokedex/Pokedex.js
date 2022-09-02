@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { goToDetailsPage, goToHomePage, goToPokedex } from "../../routes/Coordinator";
-import { CardContainer, Container, Headers } from "../homePage/Style";
+import {Container, Headers } from "../homePage/Style";
 
 
 function Pokedex() {
@@ -37,15 +37,7 @@ function Pokedex() {
               HomePage
             </button>
           </div>
-        </Headers>
-        <CardContainer></CardContainer>
-        <CardContainer></CardContainer>
-        <CardContainer></CardContainer>
-        <CardContainer></CardContainer>
-        <CardContainer></CardContainer>
-        <CardContainer></CardContainer>
-        <CardContainer></CardContainer>
-        <CardContainer></CardContainer>
+        </Headers>        
       </Container>
     </div>
     );
