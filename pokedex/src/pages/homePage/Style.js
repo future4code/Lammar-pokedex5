@@ -28,3 +28,9 @@ export const Container = styled.div`
   flex-wrap: wrap;
   justify-content: center;
 `;
+
+export const Imgs = styled.img`
+ width:30vw;
+ 
+`;
+
