@@ -30,7 +30,7 @@ export const Container = styled.div`
 `;
 
 export const Imgs = styled.img`
- width:30vw;
+ width:10vw;
  
 `;
 

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useRequestData from "../../hooks/useRequestData";
 import {
   goToDetailsPage,
@@ -19,40 +19,42 @@ function HomePage(item) {
     `${BASE_URL}/`
   );
 
-  const [img] = useRequestData(
-    `${BASE_URL}/`
+// const { id } = useParams();
+
+const [img] = useRequestData( 
+    `${BASE_URL}/1`
   );
 
 
   const pokemon =        
   data&&
-  data.results.map((pokemons) => {
+  data.results.map((pokemons, index) => {
     return (
-      
+      //data.sprites.front_default
       <div>
-      <CardContainer key={pokemons.name}>
-       <Imgs alt= "pokemons" src={pokemons.url}></Imgs>
+      <CardContainer key={pokemons.index}>
+       <Imgs alt= "pokemons" src={img.sprites.front_default}></Imgs>
        <h2>{pokemons.name}</h2>
-       <button onClick={() => addToPokedex()}>Adicionar à Pokedex</button>
+       <button >Adicionar à Pokedex</button>
  
       </CardContainer>
       </div>
     );
   });
-  const addToPokedex = (poke) => {
-    const newPokedex = [...context.pokedex]
+  // const addToPokedex = (poke) => {
+  //   const newPokedex = [...context.pokedex]
 
-    const pokeIndex = context.pokedex.findIndex((item) => item.id === poke.id)
+  //   const pokeIndex = context.pokedex.findIndex((item) => item.id === poke.id)
     
-    if(pokeIndex === -1){
-      newPokedex.push({...poke, quantity: 1})
-    } else {
-      newPokedex[pokeIndex].quantity++
-    }
+  //   if(pokeIndex === -1){
+  //     newPokedex.push({...poke, quantity: 1})
+  //   } else {
+  //     newPokedex[pokeIndex].quantity++
+  //   }
 
-    context.setPokedex(newPokedex)
+  //   context.setPokedex(newPokedex)
   
-  }
+  // }
 
 
 
@@ -90,11 +92,11 @@ function HomePage(item) {
           </div>
         </Headers>
         {pokemon}      
-<div>
+{/* <div>
 {data && data.results.map((poke) => {
         return <Pokedex key={poke.id} poke={poke} addToPokedex={addToPokedex}/>
       })}
-</div>
+</div> */}
 
       </Container>
     </div>
