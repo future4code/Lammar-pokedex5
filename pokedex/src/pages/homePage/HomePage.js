@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import useRequestData from "../../hooks/useRequestData";
 import {
   goToDetailsPage,
@@ -9,58 +9,59 @@ import {
 
 import { CardContainer, Headers, Container, Imgs } from "./Style";
 import { BASE_URL } from "../../constants/Constants";
-import CartContext from "../../context/Context";
-import Pokedex from "../pokedex/Pokedex";
+// import CartContext from "../../context/Context";
+// import Pokedex from "../pokedex/Pokedex";
+import { useState } from "react";
+import axios from "axios";
 
 function HomePage(item) {
   const navigate = useNavigate();
-  const context = useContext(CartContext)
-  const [data] = useRequestData(
-    `${BASE_URL}/`
-  );
+  // const context = useContext(CartContext)
+//   const [data] = useRequestData(
+//     ${BASE_URL}/
+//   );
 
-// const { id } = useParams();
+// // const { id } = useParams();
 
-const [img] = useRequestData( 
-    `${BASE_URL}/1`
-  );
+// const [img] = useRequestData( 
+//     ${BASE_URL}/1
+//   );
+
+const [data]=useRequestData(BASE_URL)
+// const info= []
+
+const pokemon =  data && data.results.map((item)=> { 
+    const goToDetailsPage = () => {
+        navigate('/details-page')
+        localStorage.setItem('url', item.url)
+    }
+
+    const Imgs = () =>{
+        const [img, setImg] = useState('')
+        axios.get(item.url).then(response => {
+            setImg(response.data.sprites.front_default)
+        })
+        return(
+            <img src={img} alt='imagem-pokemon'/>
+        )
+    }
+
+return (
+            <CardContainer key={item.name}>
+            <Imgs/>
+            <p>{item.name}</p>
+
+            <button>Adicionar a Pokédex</button>
+            <button onClick={goToDetailsPage} >Ver Detalhes</button>
+
+            </CardContainer>
+        )
+    }) 
 
 
-  const pokemon =        
-  data&&
-  data.results.map((pokemons, index) => {
-    return (
-      //data.sprites.front_default
+
+    return(
       <div>
-      <CardContainer key={pokemons.index}>
-       <Imgs alt= "pokemons" src={img.sprites.front_default}></Imgs>
-       <h2>{pokemons.name}</h2>
-       <button >Adicionar à Pokedex</button>
- 
-      </CardContainer>
-      </div>
-    );
-  });
-  // const addToPokedex = (poke) => {
-  //   const newPokedex = [...context.pokedex]
-
-  //   const pokeIndex = context.pokedex.findIndex((item) => item.id === poke.id)
-    
-  //   if(pokeIndex === -1){
-  //     newPokedex.push({...poke, quantity: 1})
-  //   } else {
-  //     newPokedex[pokeIndex].quantity++
-  //   }
-
-  //   context.setPokedex(newPokedex)
-  
-  // }
-
-
-
-
-  return (
-    <div>
       <Container>
         <Headers>
           <div>            
@@ -92,12 +93,6 @@ const [img] = useRequestData(
           </div>
         </Headers>
         {pokemon}      
-{/* <div>
-{data && data.results.map((poke) => {
-        return <Pokedex key={poke.id} poke={poke} addToPokedex={addToPokedex}/>
-      })}
-</div> */}
-
       </Container>
     </div>
   );
