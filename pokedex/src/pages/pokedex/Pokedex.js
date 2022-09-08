@@ -1,46 +1,33 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { goToDetailsPage, goToHomePage, goToPokedex } from "../../routes/Coordinator";
-import {Container, Headers } from "../homePage/Style";
-
+import {
+  goToDetailsPage,
+  goToHomePage,
+  goToPokedex,
+} from "../../routes/Coordinator";
+import { Container, Headers, ImgLogo } from "../homePage/Style";
+import Logo from "../../img/pokelogo.png";
 
 function Pokedex() {
-    const navigate = useNavigate();
-    
-    return (
-      <div>
+  const navigate = useNavigate();
+
+  return (
+    <div>
       <Container>
         <Headers>
           <div>
-            <h1>Pokedex</h1>
-          </div>
-          <div>
-            <button
-              onClick={() => {
-                goToPokedex(navigate);
-              }}
-            >
-              Pokedex
-            </button>
-            <button
-              onClick={() => {
-                goToDetailsPage(navigate);
-              }}
-            >
-              Detalhes
-            </button>
-            <button
+            <ImgLogo
+              src={Logo}
+              title="Home"
               onClick={() => {
                 goToHomePage(navigate);
               }}
-            >
-              HomePage
-            </button>
+            ></ImgLogo>
           </div>
-        </Headers>        
+        </Headers>
       </Container>
     </div>
-    );
-  }
-  
-  export default Pokedex;
+  );
+}
+
+export default Pokedex;
