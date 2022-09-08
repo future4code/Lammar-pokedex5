@@ -2,7 +2,6 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import useRequestData from "../../hooks/useRequestData";
 import {
-  goToDetailsPage,
   goToHomePage,
   goToPokedex,
 } from "../../routes/Coordinator";
@@ -10,12 +9,12 @@ import {
   CardContainer,
   Headers,
   Container,
-  ImgPoke,
-  ImgLogo,
-  Buttons,
-  H2,
-  ImgPokebola,
-  ButtonImg,
+  PokemonPhoto,
+  LogoImage,
+  CardButtons,
+  PokemonName,
+  ImgPokeball,
+  PokeButton,
 } from "./Style";
 import { BASE_URL } from "../../constants/Constants";
 // import CartContext from "../../context/Context";
@@ -59,16 +58,16 @@ function HomePage(item) {
         axios.get(item.url).then((response) => {
           setImg(response.data.sprites.front_default);
         });
-        return <ImgPoke src={img} alt="imagem-pokemon" />;
+        return <PokemonPhoto src={img} alt="imagem-pokemon" />;
       };
 
       return (
         <CardContainer key={item.name} addToPoke={addToPoke}>
           <Imgs />
-          <H2>{item.name}</H2>
+          <PokemonName>{item.name}</PokemonName>
 
-          <Buttons onClick={() => addToPoke(pokemon)}>Capturar</Buttons>
-          <Buttons onClick={goToDetailsPage}>Detalhes</Buttons>
+          <CardButtons onClick={() => addToPoke(pokemon)}>Capturar</CardButtons>
+          <CardButtons onClick={goToDetailsPage}>Detalhes</CardButtons>
         </CardContainer>
       );
     });
@@ -78,22 +77,22 @@ function HomePage(item) {
       <Container>
         <Headers>
           <div>
-            <ImgLogo
+            <LogoImage
               src={Logo}
               title="Home"
               onClick={() => {
                 goToHomePage(navigate);
               }}
-            ></ImgLogo>
+            ></LogoImage>
           </div>
           <div>
-            <ButtonImg
+            <PokeButton
               onClick={() => {
                 goToPokedex(navigate);
               }}
             >
-              <ImgPokebola src={Pokebola} title="Pokedex" />
-            </ButtonImg>
+              <ImgPokeball src={Pokebola} title="Pokedex" />
+            </PokeButton>
           </div>
         </Headers>
         {pokemon}
