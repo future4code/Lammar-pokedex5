@@ -1,15 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import {
-  ButtonImg,
-  CardContainer,
+  PokeButton,
   Container,
   Headers,
-  ImgLogo,
-  ImgPokebola,
+  LogoImage,
+  ImgPokeball,
 } from "../homePage/Style";
 import {
-  goToDetailsPage,
   goToHomePage,
   goToPokedex,
 } from "../../routes/Coordinator";
@@ -24,22 +22,22 @@ function DetailsPage() {
       <Container>
         <Headers>
           <div>
-            <ImgLogo
+            <LogoImage
               src={Logo}
               title="Home"
               onClick={() => {
                 goToHomePage(navigate);
               }}
-            ></ImgLogo>
+            ></LogoImage>
           </div>
           <div>
-            <ButtonImg
+            <PokeButton
               onClick={() => {
                 goToPokedex(navigate);
               }}
             >
-              <ImgPokebola src={Pokebola} title="Pokedex" />
-            </ButtonImg>
+              <ImgPokeball src={Pokebola} title="Pokedex" />
+            </PokeButton>
           </div>
         </Headers>
       </Container>
