@@ -1,10 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import useRequestData from "../../hooks/useRequestData";
-import {
-  goToHomePage,
-  goToPokedex,
-} from "../../routes/Coordinator";
+import { goToHomePage, goToPokedex } from "../../routes/Coordinator";
 import {
   CardContainer,
   Headers,
@@ -28,19 +25,14 @@ function HomePage(item) {
   const navigate = useNavigate();
 
   const [cartPoke, setCartPoke] = useState([]);
-  const addToPoke = (pokemon) => {
-    const newCart = [...cartPoke];
+  const [poke, setPoke] = useState([]);
 
-    const productIndex = cartPoke.findIndex((item) => item.id === pokemon.id);
-
-    if (productIndex === -1) {
-      newCart.push({ ...pokemon });
-    } else {
-      newCart[productIndex].quantity++;
-    }
-
-    setCartPoke(newCart);
-    console.log(newCart);
+  const addToPoke = (name) => {
+    setCartPoke(
+      cartPoke.filter((pokemon) => pokemon.id !== name.id)
+    )
+    setPoke([...poke, name])
+    console.log(setPoke)
   };
 
   const [data] = useRequestData(BASE_URL);
@@ -62,7 +54,7 @@ function HomePage(item) {
       };
 
       return (
-        <CardContainer key={item.name} addToPoke={addToPoke}>
+        <CardContainer id={item.id} key={item.name} addToPoke={addToPoke}>
           <Imgs />
           <PokemonName>{item.name}</PokemonName>
 

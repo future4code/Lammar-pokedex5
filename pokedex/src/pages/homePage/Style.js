@@ -88,7 +88,7 @@ export const CardButtons = styled.button`
   box-shadow: 3px 3px 3px lightgray;
   :hover {
     background-color: orangered;
-    transition: 0.1s;
+    transition: 0.2s;
     cursor: pointer;
   }
 `;
