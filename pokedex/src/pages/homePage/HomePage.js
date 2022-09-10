@@ -62,11 +62,16 @@ function HomePage(item) {
           <Imgs />
           <PokemonName>{item.name}</PokemonName>
 
+ details-page
+          
+
           <CardButtons onClick={() => addToPoke(item)}>Capturar</CardButtons>
           <CardButtons onClick={goToDetailsPage}>Detalhes</CardButtons>
+ master
         </CardContainer>
       );
     });
+    
 
   return (
     <div>

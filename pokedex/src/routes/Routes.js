@@ -10,7 +10,7 @@ const Rotas = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/pokedex" element={<Pokedex />} />
-        <Route path="/details-page" element={<DetailsPage />} />
+        <Route path="/details-page/:id" element={<DetailsPage />} />
       </Routes>
     </BrowserRouter>
   );
