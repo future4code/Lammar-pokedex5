@@ -1,18 +1,17 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import {
-  PokeButton,
   Container,
   Headers,
   LogoImage,
-  ImgPokeball,
+  BackImage
 } from "../homePage/Style";
 import {
+  goToBack,
   goToHomePage,
-  goToPokedex,
 } from "../../routes/Coordinator";
 import Logo from "../../img/pokelogo.png";
-import Pokebola from "../../img/pokebola.png";
+import ButtonBack from "../../img/voltar.png";
 
 function DetailsPage() {
   const navigate = useNavigate();
@@ -31,13 +30,13 @@ function DetailsPage() {
             ></LogoImage>
           </div>
           <div>
-            <PokeButton
-              onClick={() => {
-                goToPokedex(navigate);
-              }}
-            >
-              <ImgPokeball src={Pokebola} title="Pokedex" />
-            </PokeButton>
+          <BackImage
+            src={ButtonBack}
+            title="Voltar"
+            onClick={() => {
+              goToBack(navigate);
+            }}
+          ></BackImage>
           </div>
         </Headers>
       </Container>

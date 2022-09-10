@@ -27,12 +27,10 @@ function HomePage(item) {
   const [cartPoke, setCartPoke] = useState([]);
   const [poke, setPoke] = useState([]);
 
-  const addToPoke = (name) => {
-    setCartPoke(
-      cartPoke.filter((pokemon) => pokemon.id !== name.id)
-    )
-    setPoke([...poke, name])
-    console.log(setPoke)
+  const addToPoke = (item) => {
+    console.log(item);
+    setCartPoke(cartPoke.filter((pokemon) => pokemon.id !== item.length));
+    setPoke([...poke, item]);
   };
 
   const [data] = useRequestData(BASE_URL);
@@ -54,11 +52,17 @@ function HomePage(item) {
       };
 
       return (
-        <CardContainer id={item.id} key={item.name} addToPoke={addToPoke}>
+        <CardContainer
+          id={item.id}
+          item={item}
+          key={item.name}
+          poke={poke}
+          setPoke={setPoke}
+        >
           <Imgs />
           <PokemonName>{item.name}</PokemonName>
 
-          <CardButtons onClick={() => addToPoke(pokemon)}>Capturar</CardButtons>
+          <CardButtons onClick={() => addToPoke(item)}>Capturar</CardButtons>
           <CardButtons onClick={goToDetailsPage}>Detalhes</CardButtons>
         </CardContainer>
       );
