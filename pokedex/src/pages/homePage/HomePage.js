@@ -1,10 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import useRequestData from "../../hooks/useRequestData";
-import {
-  goToHomePage,
-  goToPokedex,
-} from "../../routes/Coordinator";
+import { goToHomePage, goToPokedex } from "../../routes/Coordinator";
 import {
   CardContainer,
   Headers,
@@ -28,19 +25,12 @@ function HomePage(item) {
   const navigate = useNavigate();
 
   const [cartPoke, setCartPoke] = useState([]);
-  const addToPoke = (pokemon) => {
-    const newCart = [...cartPoke];
+  const [poke, setPoke] = useState([]);
 
-    const productIndex = cartPoke.findIndex((item) => item.id === pokemon.id);
-
-    if (productIndex === -1) {
-      newCart.push({ ...pokemon });
-    } else {
-      newCart[productIndex].quantity++;
-    }
-
-    setCartPoke(newCart);
-    console.log(newCart);
+  const addToPoke = (item) => {
+    console.log(item);
+    setCartPoke(cartPoke.filter((pokemon) => pokemon.id !== item.length));
+    setPoke([...poke, item]);
   };
 
   const [data] = useRequestData(BASE_URL);
@@ -62,12 +52,22 @@ function HomePage(item) {
       };
 
       return (
-        <CardContainer key={item.name} addToPoke={addToPoke}>
+        <CardContainer
+          id={item.id}
+          item={item}
+          key={item.name}
+          poke={poke}
+          setPoke={setPoke}
+        >
           <Imgs />
           <PokemonName>{item.name}</PokemonName>
 
-          <CardButtons onClick={() => addToPoke(pokemon)}>Capturar</CardButtons>
-          <CardButtons onClick={() => goToDetailsPage(navigate, pokemon.name)}>Detalhes</CardButtons>
+ details-page
+          
+
+          <CardButtons onClick={() => addToPoke(item)}>Capturar</CardButtons>
+          <CardButtons onClick={goToDetailsPage}>Detalhes</CardButtons>
+ master
         </CardContainer>
       );
     });

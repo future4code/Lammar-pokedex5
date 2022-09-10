@@ -2,21 +2,23 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios"
 import {
-  PokeButton,
   Container,
   Headers,
   LogoImage,
-  ImgPokeball,
+  BackImage
 } from "../homePage/Style";
 import {
+details-page
    ImgDetails, PowerDetails, SuperPowerDetails, SuperPowerDetailsMini 
   } from "./Style";
 import {
+
+  goToBack,
+master
   goToHomePage,
-  goToPokedex,
 } from "../../routes/Coordinator";
 import Logo from "../../img/pokelogo.png";
-import Pokebola from "../../img/pokebola.png";
+import ButtonBack from "../../img/voltar.png";
 
 const DetailsPage = () => {
   const navigate = useNavigate()
@@ -68,13 +70,13 @@ const DetailsPage = () => {
             ></LogoImage>
           </div>
           <div>
-            <PokeButton
-              onClick={() => {
-                goToPokedex(navigate);
-              }}
-            >
-              <ImgPokeball src={Pokebola} title="Pokedex" />
-            </PokeButton>
+          <BackImage
+            src={ButtonBack}
+            title="Voltar"
+            onClick={() => {
+              goToBack(navigate);
+            }}
+          ></BackImage>
           </div>
         </Headers>
         <div>
