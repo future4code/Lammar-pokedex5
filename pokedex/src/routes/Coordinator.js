@@ -11,5 +11,5 @@ export const goToPokedex = (navigate) => {
 };
 
 export const goToDetailsPage = (navigate, id) => {
-  navigate(`/details-page`);
+  navigate("/details-page/:id");
 };

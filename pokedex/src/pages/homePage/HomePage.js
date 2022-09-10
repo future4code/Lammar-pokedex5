@@ -67,10 +67,11 @@ function HomePage(item) {
           <PokemonName>{item.name}</PokemonName>
 
           <CardButtons onClick={() => addToPoke(pokemon)}>Capturar</CardButtons>
-          <CardButtons onClick={goToDetailsPage}>Detalhes</CardButtons>
+          <CardButtons onClick={() => goToDetailsPage(navigate, pokemon.name)}>Detalhes</CardButtons>
         </CardContainer>
       );
     });
+    
 
   return (
     <div>
