@@ -1,16 +1,14 @@
 # POKEDEX
-
 Nome dos integrantes: 
-- Pessoa 1
-- Pessoa 2
-- Pessoa 3
+Guilherme Brazão
+Leandro Lima
+Antonio Claudio 
 
-Link do Surge: www.link.com.br
+📲 Link do deploy
+https://spiritual-paper.surge.sh/
 
-O que funciona:
-- Item 1
-- Item 2
+📆 Implementações futuras e melhorias
+Este é um projeto em desenvolvimento e ainda conta com melhorias e o incremento de outras funcionalidades, sendo elas:
 
-O que não funciona: 
-- Item 3
-- Item 4
+• Consertar a pagina de detalhes;
+• Fazer funcionar o pokemon capturado ir para pokedex.
